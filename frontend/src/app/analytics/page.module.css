@@ -1,0 +1,72 @@
+.page { display: flex; flex-direction: column; gap: var(--sp-xl); animation: fadeInUp 0.4s ease; }
+.pageHeader { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--sp-md); }
+.title { font-size: 24px; font-weight: 900; letter-spacing: -0.5px; }
+.subtitle { font-size: 13px; color: var(--color-text-muted); margin-top: 4px; }
+
+.scopeBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #00AEEF;
+  background: rgba(0,174,239,0.07);
+  border: 1px solid rgba(0,174,239,0.22);
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  margin-top: 4px;
+}
+
+.statCard { padding: var(--sp-lg); position: relative; overflow: hidden; }
+.statCard::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--grad-blue);
+  opacity: 0.4;
+}
+.statLabel { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--color-text-subtle); margin-bottom: 8px; }
+.statValue { font-size: 2rem; font-weight: 900; letter-spacing: -1.5px; font-variant-numeric: tabular-nums; font-family: var(--font-mono); }
+.statUnit { font-size: 1rem; font-weight: 600; margin-left: 2px; }
+.statSub { font-size: 11px; color: var(--color-text-muted); margin-top: 4px; }
+
+.chartsRow { display: grid; grid-template-columns: 3fr 2fr; gap: var(--sp-lg); }
+.chartCard { padding: var(--sp-xl); }
+.cardHeader { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--sp-lg); }
+.cardTitle { font-size: 14px; font-weight: 800; }
+.cardSub { font-size: 11px; color: var(--color-text-subtle); }
+
+.deptTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.deptTable th {
+  padding: 10px 14px;
+  text-align: left;
+  color: var(--color-text-subtle);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--color-border-strong);
+  font-family: var(--font-mono);
+}
+.deptTable td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--color-border);
+}
+.highlightRow {
+  background: rgba(0,174,239,0.04);
+}
+.highlightRow td:first-child {
+  border-left: 3px solid #00AEEF;
+  padding-left: 11px;
+}
+
+@media (max-width: 1100px) { .chartsRow { grid-template-columns: 1fr; } }
+@keyframes fadeInUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }

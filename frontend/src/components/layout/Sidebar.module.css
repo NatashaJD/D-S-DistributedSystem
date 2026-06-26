@@ -1,0 +1,202 @@
+.sidebar {
+  position: fixed;
+  left: 0; top: 0; bottom: 0;
+  width: var(--sidebar-width);
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--sidebar-border);
+  display: flex;
+  flex-direction: column;
+  z-index: 200;
+  overflow: hidden;
+  box-shadow: 4px 0 24px rgba(0,0,0,0.15);
+}
+
+/* Background wave decoration */
+.waveBg {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 200px;
+  pointer-events: none;
+  opacity: 0.8;
+}
+.waveBg svg { width: 100%; height: 100%; }
+
+/* Logo */
+.logoArea {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 18px 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.logoIcon {
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 8px rgba(0,174,239,0.4));
+  transition: filter var(--t-base);
+}
+.logoIcon:hover { filter: drop-shadow(0 0 14px rgba(0,174,239,0.6)); }
+
+.logoText { display: flex; flex-direction: column; gap: 1px; }
+
+.logoProduct {
+  font-size: 16px;
+  font-weight: 900;
+  color: #EEF5FB;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.logoBrand {
+  font-size: 9.5px;
+  font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.logoDivider {
+  height: 1px;
+  margin: 0 18px 16px;
+  background: linear-gradient(90deg, rgba(0,174,239,0.25) 0%, rgba(0,174,239,0.1) 50%, transparent 100%);
+}
+
+/* Nav */
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.navLabel {
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--sidebar-text-muted);
+  padding: 0 8px 10px;
+  display: block;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--sidebar-text-muted);
+  transition: all var(--t-fast);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid transparent;
+}
+
+.navItem:hover {
+  background: rgba(0,174,239,0.08);
+  color: #EEF5FB;
+}
+
+.navItem.active {
+  background: var(--sidebar-active-bg);
+  color: #EEF5FB;
+  border-color: rgba(0,174,239,0.22);
+}
+
+.navItem.accentItem.active {
+  background: rgba(245,130,32,0.1);
+  border-color: rgba(245,130,32,0.25);
+}
+
+.navIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: inherit;
+  transition: color var(--t-fast);
+}
+.navIcon svg { width: 100%; height: 100%; }
+
+.navItem.active .navIcon { color: var(--color-primary); }
+.navItem.accentItem.active .navIcon { color: var(--color-accent); }
+
+.navText { display: flex; flex-direction: column; gap: 1px; flex: 1; min-width: 0; }
+.navItemLabel { font-size: 13px; font-weight: 600; line-height: 1.2; }
+.navItemSub { font-size: 10px; color: var(--sidebar-text-muted); }
+
+.activeBar {
+  width: 3px;
+  height: 20px;
+  background: var(--color-primary);
+  border-radius: 2px;
+  box-shadow: var(--glow-blue-sm);
+  flex-shrink: 0;
+}
+.navItem.accentItem .activeBar { background: var(--color-accent); box-shadow: var(--glow-orange-sm); }
+
+/* Scope pill for non-global roles */
+.scopePill {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 14px 10px;
+  padding: 7px 12px;
+  border-radius: 8px;
+  background: rgba(0,174,239,0.07);
+  border: 1px solid rgba(0,174,239,0.18);
+  font-size: 10px;
+  font-weight: 600;
+  color: #00AEEF;
+  letter-spacing: 0.3px;
+  font-family: var(--font-mono);
+  position: relative;
+  z-index: 1;
+}
+
+/* Footer */
+.footer {
+  padding: 14px 18px 20px;
+  border-top: 1px solid var(--sidebar-border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.statusPill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-success-bg);
+  border: 1px solid var(--color-success-border);
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.statusDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-success);
+  box-shadow: 0 0 6px var(--color-success);
+  animation: pulseDot 2.5s infinite;
+  flex-shrink: 0;
+}
+
+.statusText { font-size: 11px; font-weight: 600; color: var(--color-success); }
+
+.footerTagline {
+  font-size: 9px;
+  font-style: italic;
+  color: var(--color-text-subtle);
+  text-align: center;
+  letter-spacing: 0.2px;
+}
+
+@keyframes pulseDot { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.35);opacity:0.6} }

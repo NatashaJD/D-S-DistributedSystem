@@ -1,0 +1,44 @@
+.wrapper { overflow-x: auto; }
+
+.grid {
+  display: grid;
+  gap: 6px;
+  min-width: 400px;
+}
+
+.cornerCell, .headerCell, .rowLabel, .cell {
+  padding: 8px 10px;
+  border-radius: 7px;
+  font-size: 12px;
+}
+
+.headerCell {
+  color: var(--color-text-subtle);
+  font-weight: 700;
+  font-size: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.rowLabel {
+  color: var(--color-text);
+  font-weight: 700;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  min-height: 46px;
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+  cursor: default;
+}
+.cell:hover { transform: scale(1.06); box-shadow: var(--shadow-md); }
+
+.cellValue { font-weight: 800; font-size: 13px; letter-spacing: -0.5px; }

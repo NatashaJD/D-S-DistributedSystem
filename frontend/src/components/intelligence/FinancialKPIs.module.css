@@ -1,0 +1,99 @@
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.cardIcon {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, #E8FBF5, #EEF5FB);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.cardTitle { font-size: 13px; font-weight: 700; color: var(--color-text); }
+.cardSub   { font-size: 11px; color: var(--color-text-subtle); margin-top: 2px; }
+
+.metricGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.metricCard {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.positive { background: #F0FFF9; border-color: #B2EED8; }
+.danger   { background: #FEF2F2; border-color: #FECACA; }
+.warning  { background: #FFF7ED; border-color: #FED7AA; }
+.recover  { background: #EEF5FB; border-color: #BAD8F0; }
+
+.metricIcon {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.6);
+  color: #00A878;
+  margin-bottom: 4px;
+}
+
+.metricValue { font-size: 16px; font-weight: 800; color: var(--color-text); line-height: 1; }
+.metricLabel { font-size: 11px; font-weight: 600; color: var(--color-text-muted); }
+.metricSub   { font-size: 10px; color: var(--color-text-subtle); }
+
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.skeleton {
+  height: 90px;
+  background: linear-gradient(90deg, var(--color-primary-faint) 25%, rgba(0,174,239,0.04) 50%, var(--color-primary-faint) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 10px;
+}
+
+@keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+.churnAlert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  border-radius: 8px;
+  font-size: 12px;
+  color: #B91C1C;
+  line-height: 1.4;
+}

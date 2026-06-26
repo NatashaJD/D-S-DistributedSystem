@@ -1,0 +1,386 @@
+.loginShell {
+  display: flex;
+  min-height: 100vh;
+  background: #0F2A3F;
+}
+
+.loginPanel {
+  flex: 0 0 520px;
+  background: #fff;
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow-y: auto;
+  position: relative;
+  z-index: 2;
+  box-shadow: 4px 0 40px rgba(0,0,0,0.3);
+}
+
+.logoRow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.logoMark {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.logoEye {
+  font-size: 28px;
+  font-weight: 900;
+  color: #00AEEF;
+  letter-spacing: -1px;
+}
+
+.logoEyes {
+  font-size: 28px;
+  font-weight: 900;
+  color: #0F2A3F;
+  letter-spacing: 4px;
+}
+
+.logoSub {
+  font-size: 11px;
+  color: #3D6480;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.heading {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0F2A3F;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.sub {
+  font-size: 13px;
+  color: #3D6480;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.errorBanner {
+  background: #FEE2E2;
+  border: 1px solid #FECACA;
+  color: #B91C1C;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.roleGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.roleCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  background: #F8FAFC;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.roleCard::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--role-color, #00AEEF);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.roleCard:hover {
+  border-color: var(--role-color, #00AEEF);
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.roleCard:hover::before {
+  opacity: 1;
+}
+
+.roleCard:disabled {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.roleCardActive {
+  border-color: var(--role-color, #00AEEF) !important;
+  background: #fff !important;
+}
+
+.roleCardActive::before {
+  opacity: 1 !important;
+}
+
+.roleAvatar {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.05);
+  border-radius: 8px;
+  color: var(--role-color, #00AEEF);
+}
+
+.roleInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.roleName {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0F2A3F;
+  margin-bottom: 1px;
+}
+
+.roleUser {
+  font-size: 12px;
+  color: #3D6480;
+  margin-bottom: 4px;
+}
+
+.roleDesc {
+  font-size: 11px;
+  color: #6B8FAF;
+  line-height: 1.4;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(0,174,239,0.2);
+  border-top-color: #00AEEF;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #9DB5C8;
+  justify-content: center;
+}
+
+.footerDot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #C8D9E6;
+}
+
+/* ── Backdrop ─────────────────────────────── */
+.backdrop {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.backdrop::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(0,174,239,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 20%, rgba(0,174,239,0.08) 0%, transparent 50%);
+}
+
+.backdropText {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 40px;
+}
+
+.statLine {
+  font-size: 28px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.08);
+  letter-spacing: -0.5px;
+  animation: fadeSlide 4s ease infinite alternate;
+}
+
+.statLine:nth-child(2) { animation-delay: 0.5s; color: rgba(0,174,239,0.15); }
+.statLine:nth-child(3) { animation-delay: 1s; }
+.statLine:nth-child(4) { animation-delay: 1.5s; color: rgba(0,174,239,0.12); }
+
+@keyframes fadeSlide {
+  from { opacity: 0.6; transform: translateY(4px); }
+  to   { opacity: 1.0; transform: translateY(0); }
+}
+
+/* ── Role card chevron (Regional Manager) ──── */
+.roleChevron {
+  flex-shrink: 0;
+  color: var(--role-color, #00A878);
+  opacity: 0.5;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  display: flex;
+  align-items: center;
+}
+
+.roleCard:hover .roleChevron {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+/* ── Region picker view ───────────────────── */
+.regionPickerView {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.regionBackBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: #3D6480;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 0;
+  transition: color 0.15s ease;
+}
+
+.regionBackBtn:hover {
+  color: #0F2A3F;
+}
+
+.regionPickerTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0F2A3F;
+  margin: 0 0 6px 0;
+}
+
+.regionPickerSub {
+  font-size: 13px;
+  color: #3D6480;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.regionGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.regionGroupLabel {
+  font-size: 10px;
+  font-weight: 700;
+  color: #3D6480;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.regionGroupLabel::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #E8F0F5;
+}
+
+.regionBtnGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+}
+
+.regionBtn {
+  padding: 10px 10px;
+  background: #F8FAFC;
+  border: 1.5px solid transparent;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0F2A3F;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-height: 40px;
+  justify-content: center;
+}
+
+.regionBtn:hover:not(:disabled) {
+  border-color: #00A878;
+  background: #fff;
+  color: #00A878;
+  box-shadow: 0 2px 8px rgba(0,168,120,0.1);
+}
+
+.regionBtn:disabled {
+  cursor: default;
+  opacity: 0.65;
+}
+
+.regionBtnActive {
+  border-color: #00A878 !important;
+  background: #fff !important;
+  align-items: center;
+}
+
+.regionBtnCountry {
+  font-size: 10px;
+  font-weight: 400;
+  color: #6B8FAF;
+}
+
+.spinnerSm {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(0,168,120,0.2);
+  border-top-color: #00A878;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+/* ── Mobile ───────────────────────────────── */
+@media (max-width: 768px) {
+  .loginShell { flex-direction: column; }
+  .loginPanel { flex: 1; padding: 32px 20px; box-shadow: none; }
+  .backdrop { display: none; }
+  .heading { font-size: 18px; }
+}

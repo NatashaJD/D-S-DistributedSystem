@@ -1,0 +1,223 @@
+.card {
+  padding: var(--sp-xl);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.headerIcon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary-faint);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 10px;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 2px;
+}
+
+.sub {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rec {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid;
+  border-radius: 10px;
+  padding: 14px 16px;
+  transition: border-color var(--t-fast), transform var(--t-fast);
+}
+
+.rec:hover {
+  border-color: var(--color-border-strong);
+  transform: translateX(2px);
+}
+
+.recHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.priorityBadge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 20px;
+  border: 1px solid;
+  letter-spacing: 0.3px;
+}
+
+.areaChip {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.metricChip {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--color-primary);
+  background: var(--color-primary-faint);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.recTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 6px;
+}
+
+.insight {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin: 0 0 10px;
+}
+
+.insightLabel {
+  color: var(--color-text-subtle);
+  font-weight: 600;
+}
+
+.actionBox {
+  background: rgba(0, 119, 204, 0.06);
+  border: 1px solid rgba(0, 119, 204, 0.18);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.actionLabel {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.actionText {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Action tracking */
+.actionedBadge {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  background: #E8FBF5;
+  color: #00A878;
+  border: 1px solid #B2EED8;
+  border-radius: 20px;
+}
+
+.recActioned {
+  opacity: 0.8;
+}
+
+.priorityDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 2px;
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-primary);
+  background: var(--color-primary-faint);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all var(--t-fast);
+  white-space: nowrap;
+}
+
+.actionBtn:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.actionBtn:disabled { opacity: 0.6; cursor: default; }
+
+.btnSpinner {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid rgba(0,174,239,0.3);
+  border-top-color: #00AEEF;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.actionedChip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #00A878;
+  background: #E8FBF5;
+  border: 1px solid #B2EED8;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.actionedBox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: #F0FFF9;
+  border: 1px solid #B2EED8;
+  border-radius: 8px;
+  font-size: 11px;
+  color: #00A878;
+  font-weight: 600;
+}
+

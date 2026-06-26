@@ -1,0 +1,156 @@
+.swimlane { display: flex; flex-direction: column; gap: 10px; }
+
+/* Lane */
+.lane {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: border-color var(--t-fast);
+}
+.lane:hover { border-color: var(--color-border-strong); }
+
+.laneHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px;
+  background: rgba(0,119,204,0.03);
+  border-left: 4px solid transparent;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.laneDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 6px currentColor;
+}
+
+.laneName {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  flex: 1;
+}
+
+.laneAlert {
+  color: var(--color-warning);
+  font-size: 13px;
+  animation: pulseOpacity 1.5s infinite;
+}
+
+.laneActive { font-size: 10px; font-weight: 700; }
+
+.laneContent { padding: 14px 16px; overflow-x: auto; }
+
+.emptyLane {
+  color: var(--color-text-subtle);
+  font-size: 12px;
+  font-style: italic;
+  padding: 6px 0;
+}
+
+.stagesRow {
+  display: flex;
+  align-items: flex-start;
+  min-width: max-content;
+}
+
+.stageWrapper { display: flex; align-items: center; }
+
+.connector {
+  width: 36px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-border-strong), var(--color-border));
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* Node */
+.stageNode {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.nodeDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 8px;
+  border: 2px solid rgba(255,255,255,0.2);
+}
+
+.nodePulse { animation: pulseDot 1.2s infinite; }
+
+.nodeCard {
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 12px;
+  min-width: 195px;
+  max-width: 230px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: border-color var(--t-fast), box-shadow var(--t-fast);
+}
+
+.nodeCard:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.nodeHeader { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+.nodeName { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+
+.nodeStatus {
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.nodeMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 10px;
+  color: var(--color-text-subtle);
+  font-variant-numeric: tabular-nums;
+}
+
+.nodeSLA { display: flex; align-items: center; gap: 6px; }
+.slaTrack {
+  flex: 1;
+  height: 4px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 3px;
+  overflow: visible;
+  position: relative;
+  border: 1px solid var(--color-border);
+}
+.slaFill { height: 100%; border-radius: 3px; transition: width 1s ease; }
+.slaMarker75 {
+  position: absolute;
+  left: 37.5%;
+  top: -4px;
+  width: 1.5px;
+  height: 10px;
+  background: rgba(245,166,35,0.5);
+  border-radius: 1px;
+}
+.slaPct { font-size: 10px; font-weight: 800; min-width: 30px; text-align: right; font-variant-numeric: tabular-nums; }
+
+.nodeAssignee { font-size: 10px; color: var(--color-text-muted); }
+.nodeDuration { font-size: 10px; color: var(--color-text-muted); font-variant-numeric: tabular-nums; }
+
+@keyframes pulseDot { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.4);opacity:0.5} }
+@keyframes pulseOpacity { 0%,100%{opacity:1} 50%{opacity:0.3} }

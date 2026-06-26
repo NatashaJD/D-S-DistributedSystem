@@ -1,0 +1,191 @@
+.card {
+  display: grid;
+  grid-template-columns: 140px 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+  padding: 28px 32px;
+}
+
+/* ── Ring gauge ────────────────────── */
+.gaugeSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.ring {
+  overflow: visible;
+}
+
+.ringTrack {
+  fill: none;
+  stroke: rgba(255,255,255,0.06);
+  stroke-width: 10;
+}
+
+.ringArc {
+  fill: none;
+  stroke-width: 10;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ringScore {
+  fill: #EDF4FF;
+  font-size: 26px;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  letter-spacing: -1px;
+}
+
+.ringLabel {
+  fill: #5A7A99;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.gradeRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gradeBadge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 20px;
+  border: 1px solid;
+  letter-spacing: 0.5px;
+}
+
+.trendChip {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.statusLabel {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+/* ── Title section ─────────────────── */
+.titleSection {
+  border-left: 1px solid var(--color-border);
+  padding-left: 32px;
+}
+
+.overline {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--color-primary);
+  margin: 0 0 8px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 10px;
+  line-height: 1.2;
+}
+
+.desc {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0 0 16px;
+}
+
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid;
+  font-size: 12px;
+}
+
+.statusDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.8); }
+}
+
+.statusSub {
+  color: var(--color-text-muted);
+}
+
+/* ── Component scores ──────────────── */
+.components {
+  border-left: 1px solid var(--color-border);
+  padding-left: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.componentRow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.componentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.componentLabel {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.componentScore {
+  font-size: 13px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+
+.componentBar {
+  height: 5px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.componentFill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.componentWeight {
+  font-size: 10px;
+  color: var(--color-text-subtle);
+}
+
+@media (max-width: 900px) {
+  .card {
+    grid-template-columns: 1fr;
+  }
+  .titleSection, .components {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid var(--color-border);
+    padding-top: 20px;
+  }
+}

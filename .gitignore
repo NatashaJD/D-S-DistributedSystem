@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.so
+.venv/
+venv/
+env/
+
+# Environment
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Next.js
+frontend/.next/
+frontend/node_modules/
+frontend/out/
+frontend/.vercel
+
+# DB
+*.sqlite3
+*.db
+
+# Docker
+docker-data/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Claude Code internal
+.claude/
+*.swp
+*.swo
+
+# Alembic
+alembic/versions/*.pyc
+
+# Logs
+*.log
+logs/
