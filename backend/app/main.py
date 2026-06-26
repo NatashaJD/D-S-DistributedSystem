@@ -113,10 +113,81 @@ async def sla_recalculation_loop():
             pass
 
 
+def _auto_seed_if_empty():
+    """Seed demo data on first run (cloud deployments start with an empty DB)."""
+    try:
+        from app.models.service_request import ServiceRequest
+        from app.models.department import Department, SLAConfig
+        from app.models.customer import Customer
+        from app.models.event import Event
+        from app.models.journey_stage import JourneyStage
+        from app.seed.generate import (
+            generate_customers, generate_requests_and_journeys,
+            generate_sla_configs, generate_departments,
+        )
+        from datetime import datetime as _dt
+
+        db = SessionLocal()
+        try:
+            if db.query(ServiceRequest).count() > 0:
+                return  # already seeded
+            for d in generate_departments():
+                db.add(Department(**d))
+            for s in generate_sla_configs():
+                db.add(SLAConfig(**s))
+            db.commit()
+
+            customers = generate_customers(50)
+            for c in customers:
+                db.add(Customer(id=c["id"], name=c["name"], email=c["email"],
+                                phone=c["phone"], region=c["region"], company=c["company"]))
+            db.commit()
+
+            requests, stages, events = generate_requests_and_journeys(customers, 200)
+            for r in requests:
+                db.add(ServiceRequest(
+                    id=r["id"], customer_id=r["customer_id"],
+                    product_category=r["product_category"], priority=r["priority"],
+                    current_stage=r["current_stage"], assigned_department=r["assigned_department"],
+                    status=r["status"], description=r["description"],
+                    crm_reference=r["crm_reference"], erp_reference=r["erp_reference"],
+                    created_at=_dt.fromisoformat(r["created_at"]),
+                    updated_at=_dt.fromisoformat(r["updated_at"]),
+                ))
+            db.commit()
+
+            for s in stages:
+                db.add(JourneyStage(
+                    id=s["id"], request_id=s["request_id"], stage_name=s["stage_name"],
+                    department=s["department"],
+                    started_at=_dt.fromisoformat(s["started_at"]),
+                    completed_at=_dt.fromisoformat(s["completed_at"]) if s["completed_at"] else None,
+                    sla_deadline=_dt.fromisoformat(s["sla_deadline"]) if s["sla_deadline"] else None,
+                    status=s["status"], sla_percentage=s["sla_percentage"],
+                    assigned_to=s["assigned_to"],
+                ))
+            db.commit()
+
+            for e in events:
+                db.add(Event(
+                    id=e["id"], request_id=e["request_id"], event_type=e["event_type"],
+                    stage=e["stage"], source_system=e["source_system"],
+                    actor=e["actor"], description=e["description"],
+                    timestamp=_dt.fromisoformat(e["timestamp"]),
+                    metadata_json=e["metadata_json"],
+                ))
+            db.commit()
+        finally:
+            db.close()
+    except Exception:
+        pass
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     Base.metadata.create_all(bind=engine)
     loop = asyncio.get_event_loop()
+    await loop.run_in_executor(None, _auto_seed_if_empty)
     await loop.run_in_executor(None, _run_warmup)
     redis_task = asyncio.create_task(ws_manager.redis_subscriber())
     sla_task = asyncio.create_task(sla_recalculation_loop())
