@@ -25,7 +25,7 @@ export function AuthProvider({ children }) {
   const login = useCallback(async (username, password, region = null) => {
     const body = { username, password };
     if (region) body.region = region;
-    const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+    const apiBase = process.env.NEXT_PUBLIC_API_URL || 'https://dayliff-1000-eyes-api-production.up.railway.app';
     const res = await fetch(`${apiBase}/api/v1/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

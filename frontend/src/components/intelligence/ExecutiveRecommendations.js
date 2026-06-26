@@ -40,7 +40,7 @@ export default function ExecutiveRecommendations({ data, loading }) {
       setActioning(null);
 
       // Fire-and-forget to backend
-      const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+      const apiBase = process.env.NEXT_PUBLIC_API_URL || 'https://dayliff-1000-eyes-api-production.up.railway.app';
       fetch(`${apiBase}/api/v1/analytics/recommendations/action`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

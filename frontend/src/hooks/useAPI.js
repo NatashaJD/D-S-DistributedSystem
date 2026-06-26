@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect, useCallback } from 'react';
 
-export const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+export const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://dayliff-1000-eyes-api-production.up.railway.app';
 
 export function useAPI(path, options = {}) {
   const [data, setData] = useState(null);

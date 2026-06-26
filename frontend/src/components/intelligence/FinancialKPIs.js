@@ -14,7 +14,7 @@ export default function FinancialKPIs() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const apiBase = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+    const apiBase = process.env.NEXT_PUBLIC_API_URL || 'https://dayliff-1000-eyes-api-production.up.railway.app';
     fetch(`${apiBase}/api/v1/analytics/financial-kpis`)
       .then(r => r.json())
       .then(d => { setData(d); setLoading(false); })
